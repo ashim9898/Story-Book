@@ -1,4 +1,4 @@
-import { InputNumberProps } from './interface';
+import { InputNumberProps } from '../interface';
 import { RigoTextAreaContext } from './rigo-textarea-context';
 
 export const RigoTextarea = (props: InputNumberProps) => {

@@ -1,6 +1,6 @@
 import * as fromFormHelpers from '../@form-helper';
-import FormErrorLable from '../components/formErrorLabel';
-import { FormErrorLabelProps } from './interface';
+import FormErrorLable from './formLabel';
+import { FormErrorLabelProps } from '../interface';
 import { useTextArea } from './use-textarea';
 
 export const RigoFormErrorLabel = (props: FormErrorLabelProps) => {

@@ -1,20 +1,20 @@
-import { RigoComponent } from '../components/rigo-component';
-import { RigoDefault } from '../components/rigo-default';
-import { RigoFormControl } from '../components/rigo-form-control';
-import { RigoFormErrorLabel } from '../components/rigo-form-error-label';
-import { RigoFormHelperText } from '../components/rigo-form-helper-text';
-import { RigoFormLabel } from '../components/rigo-form-label';
-import { RigoTextarea } from '../components/rigo-textarea';
+import { InputBoxComponent } from '../components/Input Box/inputBox-component';
+import { InputBoxDefault } from '../components/Input Box/inputBox-default';
+import { InputBoxFormControl } from '../components/Input Box/inputBox-form-control';
+import { InputBoxErrorLabel } from '../components/Input Box/inputBox-form-error-label';
+import { InputBoxFormHelperText } from '../components/Input Box/inputBox-form-helper-text';
+import { InputBoxFormLabel } from '../components/Input Box/inputBox-form-label';
+import { InputBox } from '../components/Input Box/inputBox';
 
 export const InputBoxV2 = (props: any) => {
-  return <RigoTextarea {...props} />;
+  return <InputBox {...props} />;
 };
 
-InputBoxV2.Default = RigoDefault;
-InputBoxV2.FormLabel = RigoFormLabel;
-InputBoxV2.HelperText = RigoFormHelperText;
-InputBoxV2.ErrorLabel = RigoFormErrorLabel;
-InputBoxV2.FormControl = RigoFormControl;
-InputBoxV2.Component = RigoComponent;
+InputBoxV2.Default = InputBoxDefault;
+InputBoxV2.FormLabel = InputBoxFormLabel;
+InputBoxV2.HelperText = InputBoxFormHelperText;
+InputBoxV2.ErrorLabel = InputBoxErrorLabel;
+InputBoxV2.FormControl = InputBoxFormControl;
+InputBoxV2.Component = InputBoxComponent;
 
 export default InputBoxV2;

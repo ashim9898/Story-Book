@@ -1,5 +1,7 @@
-import { Input } from '@chakra-ui/react'
- const InputUncontrolled = (props: any) => {
+import { Input } from '@chakra-ui/react';
+import { useInputBox } from './useInputBox';
+
+export const InputBoxUncontrolled = (props: any) => {
   const { onChangeRHF, value: rhfValue, onChange, ...propsRest } = props;
   const {
     name,
@@ -11,7 +13,7 @@ import { Input } from '@chakra-ui/react'
     rule,
     onChange: _onChange,
     ...contextRest
-  } = useTextArea();
+  } = useInputBox();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {value} = event.target
@@ -28,8 +30,7 @@ import { Input } from '@chakra-ui/react'
     ...propsRest,
   };
   return (
-    <Input placeholder='Basic usage' onChange={handleChange} {...inputProps} />
+    <Input placeholder='Basic usage' onChange={handleChange} {...inputProps}/>
+ 
   );
 };
-
-export default InputUncontrolled

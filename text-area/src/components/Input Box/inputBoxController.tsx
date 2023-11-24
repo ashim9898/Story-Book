@@ -2,12 +2,12 @@ import { Controller,useFormContext  } from 'react-hook-form';
 import { isEmpty } from 'lodash';
 
 import * as fromFormHelpers from '../@form-helper';
-import { ControlledComponentProps } from './interface';
-import { useTextArea } from './use-textarea';
-import InputUncontrolled from './inputUncontrolled';
+import { ControlledComponentProps } from '../interface';
+import { useInputBox } from './useInputBox';
+import { InputBoxUncontrolled } from './inputBoxUncontrolled';
 
-export const InputController = (props: ControlledComponentProps) => {
-  const { control, rule, name, required } = useTextArea();
+export const InputBoxController = (props: ControlledComponentProps) => {
+  const { control, rule, name, required } = useInputBox();
   const { formState } = useFormContext();
   
 
@@ -26,7 +26,7 @@ export const InputController = (props: ControlledComponentProps) => {
       name={name}
       rules={_rule}
       render={({ field: { onChange, value } }) => (
-        <InputUncontrolled
+        <InputBoxUncontrolled
           value={value}
           onChangeRHF={onChange}
           {...props}

@@ -1,5 +1,5 @@
 import { Flex } from '@chakra-ui/react';
-import { InputNumberProps } from './interface';
+import { InputNumberProps } from '../interface';
 import { RigoTextarea } from './rigo-textarea';
 import { RigoFormControl } from './rigo-form-control';
 import { RigoFormHelperText } from './rigo-form-helper-text';

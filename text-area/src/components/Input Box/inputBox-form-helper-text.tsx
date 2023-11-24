@@ -1,9 +1,9 @@
 import { FormHelperText } from '@chakra-ui/react';
-import { FormHelperTextPropsType } from './interface';
-import { useTextArea } from './use-textarea';
+import { FormHelperTextPropsType } from '../interface';
+import { useInputBox } from './useInputBox';
 
-export const RigoFormHelperText = (props: FormHelperTextPropsType) => {
-  const { required } = useTextArea();
+export const InputBoxFormHelperText = (props: FormHelperTextPropsType) => {
+  const { required } = useInputBox();
   if (required) {
     return null;
   }

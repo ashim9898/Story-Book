@@ -1,19 +1,12 @@
 import { Button, ChakraProvider, Container, Flex } from '@chakra-ui/react';
 import type { Meta } from '@storybook/react';
-import TextAreaV2 from './index';
+import InputBoxV2 from './inputBox';
 import FormProvider from '../components/formProvider';
 import ConnectForm from '../components/connectForm';
 
-//Json file form label 
-//read json
-//write to file
-//fn formmaker
-//formMaker
-
-
-const meta: Meta<typeof TextAreaV2> = {
-  title: 'V2/Forms/Input Textarea V2',
-  component: TextAreaV2,
+const meta: Meta<typeof InputBoxV2> = {
+  title: 'V2/Forms/Input InputBox V2',
+  component: InputBoxV2,
 };
 
 export default meta;
@@ -56,7 +49,7 @@ export const Default = {
                   flexDirection='column'
                   gap={3}
                 >
-                  <TextAreaV2.Default
+                  <InputBoxV2.Default
                     name='default'
                     label='Default'
                     required={true}
@@ -91,7 +84,7 @@ export const Uncontrolled = {
           flexDirection='column'
           gap={3}
         >
-          <TextAreaV2.Default
+          <InputBoxV2.Default
             name='uncontrolled'
             label='Uncontrolled'
             value={0}
@@ -141,7 +134,7 @@ export const Empty = {
                   flexDirection='column'
                   gap={3}
                 >
-                  <TextAreaV2.Default
+                  <InputBoxV2.Default
                     name='empty'
                     label='Empty'
                     required={true}
@@ -200,7 +193,7 @@ export const Composed = {
                   flexDirection='column'
                   gap={3}
                 >
-                  <TextAreaV2
+                  <InputBoxV2
                     name='composed'
                     label='Composed'
                     isDisabled
@@ -215,15 +208,15 @@ export const Composed = {
 
                     
                 
-                    <TextAreaV2.FormControl>
+                    <InputBoxV2.FormControl>
                       <Flex gap={2}>
-                        <TextAreaV2.FormLabel />
+                        <InputBoxV2.FormLabel />
                       </Flex>
-                      <TextAreaV2.Component />
-                      <TextAreaV2.HelperText />
-                      <TextAreaV2.ErrorLabel />
-                    </TextAreaV2.FormControl>
-                  </TextAreaV2>
+                      <InputBoxV2.Component />
+                      <InputBoxV2.HelperText />
+                      <InputBoxV2.ErrorLabel />
+                    </InputBoxV2.FormControl>
+                  </InputBoxV2>
 
                   <Flex>
                     <Button type='submit'>Submit</Button>
