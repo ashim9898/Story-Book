@@ -1,4 +1,4 @@
 export * from './base-default-from-values';
 export * from './base-form-interface';
-export * from './deepMerge';
-export * from './resolveObjectValueByPath';
+export * from './deep-merge';
+export * from './resolve-object-value-by-path';

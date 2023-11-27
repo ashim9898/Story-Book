@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputBoxContext } from './inputBoxContext';
+import { InputBoxContext } from './input-box-context';
 
 export const useInputBox = () => {
   const context = React.useContext(InputBoxContext);

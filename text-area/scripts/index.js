@@ -70,7 +70,7 @@ const formMaker = (json) => {
   console.log({
     finalized,
   });
-  fs.writeFileSync("src/scripts/formTemplate.tsx", finalized);
+  fs.writeFileSync("scripts/form-template.tsx", finalized);
 };
 const json = {
   formLabel: "Buy Cars",

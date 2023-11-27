@@ -1,10 +1,10 @@
-import { InputBoxComponent } from '../components/Input Box/inputBox-component';
-import { InputBoxDefault } from '../components/Input Box/inputBox-default';
-import { InputBoxFormControl } from '../components/Input Box/inputBox-form-control';
-import { InputBoxErrorLabel } from '../components/Input Box/inputBox-form-error-label';
-import { InputBoxFormHelperText } from '../components/Input Box/inputBox-form-helper-text';
-import { InputBoxFormLabel } from '../components/Input Box/inputBox-form-label';
-import { InputBox } from '../components/Input Box/inputBox';
+import { InputBoxComponent } from '../components/input-box/inputbox-component';
+import { InputBoxDefault } from '../components/input-box/inputbox-default';
+import { InputBoxFormControl } from '../components/input-box/inputbox-form-control';
+import { InputBoxErrorLabel } from '../components/input-box/inputbox-form-error-label';
+import { InputBoxFormHelperText } from '../components/input-box/inputbox-form-helper-text';
+import { InputBoxFormLabel } from '../components/input-box/inputbox-form-label';
+import { InputBox } from '../components/input-box/inputbox';
 
 export const InputBoxV2 = (props: any) => {
   return <InputBox {...props} />;

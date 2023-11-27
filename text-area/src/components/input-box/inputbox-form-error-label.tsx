@@ -1,10 +1,10 @@
 import * as fromFormHelpers from '../@form-helper';
-import FormErrorLable from './formLabel';
+import FormErrorLable from './form-label';
 import { FormErrorLabelProps } from '../interface';
-import { useTextArea } from './use-textarea';
+import { useInputBox } from './use-inputbox';
 
-export const RigoFormErrorLabel = (props: FormErrorLabelProps) => {
-  const { name, errors, required } = useTextArea();
+export const InputBoxErrorLabel = (props: FormErrorLabelProps) => {
+  const { name, errors, required } = useInputBox();
 
   if (!required) {
     return null;

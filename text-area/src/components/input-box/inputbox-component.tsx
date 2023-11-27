@@ -1,7 +1,7 @@
 import { ComponentProps } from '../interface';
-import {useInputBox} from './useInputBox'
-import { InputBoxController } from './inputBoxController';
-import { InputBoxUncontrolled } from './inputBoxUncontrolled';
+import {useInputBox} from './use-inputbox'
+import { InputBoxController } from './input-box-controller';
+import { InputBoxUncontrolled } from './input-box-uncontrolled';
 
 
 export const InputBoxComponent = (props: ComponentProps) => {

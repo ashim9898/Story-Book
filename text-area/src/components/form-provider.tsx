@@ -3,7 +3,7 @@ import { FormProvider as RHFFormProvider, useForm } from 'react-hook-form';
 import { FormProviderProps } from './interface';
 /* eslint-disable-next-line */
 
-export function FormProvider(props:FormProviderProps) {
+const FormProvider=(props:FormProviderProps) {
   const { defaultValues, children, onSubmit} = props;
   const methods = useForm({mode:'all', defaultValues});
 
@@ -13,4 +13,4 @@ export function FormProvider(props:FormProviderProps) {
     </RHFFormProvider>
   );
 }
-export default FormProvider;
+export default FormProvider

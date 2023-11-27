@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Input } from '@chakra-ui/react';
-import { useInputBox } from './useInputBox';
+import { useInputBox } from './use-inputbox';
 
 interface FormField {
     label: string;

@@ -1,8 +1,8 @@
 import { Button, ChakraProvider, Container, Flex } from '@chakra-ui/react';
 import type { Meta } from '@storybook/react';
 import TextAreaV2 from './index';
-import FormProvider from '../components/formProvider';
-import ConnectForm from '../components/connectForm';
+import FormProvider from '../components/form-provider';
+import ConnectForm from '../components/connect-form';
 
 //Json file form label 
 //read json

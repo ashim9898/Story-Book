@@ -1,5 +1,5 @@
 import { InputNumberProps } from '../interface';
-import { InputBoxContext } from './inputBoxContext';
+import { InputBoxContext } from './input-box-context';
 
 export const InputBox = (props: InputNumberProps) => {
   const { children, ...rest } = props;

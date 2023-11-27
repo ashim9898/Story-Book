@@ -3,8 +3,8 @@ import { isEmpty } from 'lodash';
 
 import * as fromFormHelpers from '../@form-helper';
 import { ControlledComponentProps } from '../interface';
-import { useInputBox } from './useInputBox';
-import { InputBoxUncontrolled } from './inputBoxUncontrolled';
+import { useInputBox } from './use-inputbox';
+import { InputBoxUncontrolled } from './input-box-uncontrolled';
 
 export const InputBoxController = (props: ControlledComponentProps) => {
   const { control, rule, name, required } = useInputBox();

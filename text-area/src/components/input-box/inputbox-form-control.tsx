@@ -1,5 +1,5 @@
 import { FormControl, FormControlProps } from '@chakra-ui/react';
-import { useInputBox } from './useInputBox';
+import { useInputBox } from './use-inputbox';
 
 export const InputBoxFormControl = (props: FormControlProps) => {
   const { children,...rest } = props;

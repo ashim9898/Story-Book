@@ -1,11 +1,11 @@
 import { Flex } from '@chakra-ui/react';
 import { InputNumberProps } from '../interface';
-import { InputBox } from './inputBox';
-import { InputBoxFormControl } from './inputBox-form-control';
-import { InputBoxFormHelperText } from './inputBox-form-helper-text';
-import { InputBoxFormLabel } from './inputBox-form-label';
-import { InputBoxComponent } from './inputBox-component';
-import { InputBoxErrorLabel } from './inputBox-form-error-label';
+import { InputBox } from './inputbox';
+import { InputBoxFormControl } from './inputbox-form-control';
+import { InputBoxFormHelperText } from './inputbox-form-helper-text';
+import { InputBoxFormLabel } from './inputbox-form-label';
+import { InputBoxComponent } from './inputbox-component';
+import { InputBoxErrorLabel } from './inputbox-form-error-label';
 
 export const InputBoxDefault = (props: InputNumberProps) => {
   return (
