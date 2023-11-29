@@ -1,7 +1,7 @@
 import { TextProps } from '@chakra-ui/react';
 import * as fromFormHelpers from '../@form-helper';
 import { useRigoCheckboxGroup } from './use-checkbox-group';
-import { FormErrorLable } from "../form-error-label";
+import FormErrorLable from "./form-error-label";
 
 export const RigoFormErrorLabel = (props: TextProps) => {
   const { name, errors, required } = useRigoCheckboxGroup();
