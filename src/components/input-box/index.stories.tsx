@@ -1,8 +1,8 @@
 import { Button, ChakraProvider, Container, Flex } from '@chakra-ui/react';
 import type { Meta } from '@storybook/react';
-import InputBoxV2 from './inputbox';
-import {FormProvider}  from '../components/connect-form/form-provider';
-import {ConnectForm} from '../components/connect-form/connect-form';
+import InputBoxV2 from './index';
+import {FormProvider}  from '../connect-form/form-provider';
+import {ConnectForm} from '../connect-form/connect-form';
 
 
 const meta: Meta<typeof InputBoxV2> = {

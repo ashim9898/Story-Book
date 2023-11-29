@@ -1,19 +1,12 @@
 import { Button, ChakraProvider, Container, Flex } from '@chakra-ui/react';
 import type { Meta } from '@storybook/react';
-import TextAreaV2 from './index';
-import {FormProvider}  from '../components/connect-form/form-provider';
-import {ConnectForm} from '../components/connect-form/connect-form';
+import InputNumberV2 from './index.tsx';
+import { FormProvider } from '../connect-form/form-provider';
+import { ConnectForm } from '../connect-form/connect-form';
 
-//Json file form label 
-//read json
-//write to file
-//fn formmaker
-//formMaker
-
-
-const meta: Meta<typeof TextAreaV2> = {
-  title: 'V2/Forms/Input Textarea V2',
-  component: TextAreaV2,
+const meta: Meta<typeof InputNumberV2> = {
+  title: 'V2/Forms/Input Number V2',
+  component: InputNumberV2,
 };
 
 export default meta;
@@ -30,7 +23,7 @@ export const Default = {
             });
           }}
           defaultValues={{
-           
+            empty: 0,
             default: 10,
             composed: 20,
           }}
@@ -56,16 +49,13 @@ export const Default = {
                   flexDirection='column'
                   gap={3}
                 >
-                  <TextAreaV2.Default
+                  <InputNumberV2.Default
                     name='default'
                     label='Default'
-                    required={true}
+                    required
                     {...inputProps}
                   />
 
-                  
-              
-                  
                   <Flex>
                     <Button type='submit'>Submit</Button>
                   </Flex>
@@ -91,7 +81,7 @@ export const Uncontrolled = {
           flexDirection='column'
           gap={3}
         >
-          <TextAreaV2.Default
+          <InputNumberV2.Default
             name='uncontrolled'
             label='Uncontrolled'
             value={0}
@@ -99,9 +89,6 @@ export const Uncontrolled = {
               console.log({ name, value });
             }}
           />
-          
-          
-
         </Container>
       </ChakraProvider>
     );
@@ -118,7 +105,9 @@ export const Empty = {
               data,
             });
           }}
-          
+          defaultValues={{
+            empty: 0,
+          }}
           showDevTool
         >
           <ConnectForm>
@@ -141,15 +130,13 @@ export const Empty = {
                   flexDirection='column'
                   gap={3}
                 >
-                  <TextAreaV2.Default
+                  <InputNumberV2.Default
                     name='empty'
                     label='Empty'
                     required={true}
                     {...inputProps}
                   />
 
-                 
-                  
                   <Flex>
                     <Button type='submit'>Submit</Button>
                   </Flex>
@@ -200,7 +187,7 @@ export const Composed = {
                   flexDirection='column'
                   gap={3}
                 >
-                  <TextAreaV2
+                  <InputNumberV2
                     name='composed'
                     label='Composed'
                     isDisabled
@@ -212,18 +199,15 @@ export const Composed = {
                     // }}
                     {...inputProps}
                   >
-
-                    
-                
-                    <TextAreaV2.FormControl>
+                    <InputNumberV2.FormControl>
                       <Flex gap={2}>
-                        <TextAreaV2.FormLabel />
+                        <InputNumberV2.FormLabel />
                       </Flex>
-                      <TextAreaV2.Component />
-                      <TextAreaV2.HelperText />
-                      <TextAreaV2.ErrorLabel />
-                    </TextAreaV2.FormControl>
-                  </TextAreaV2>
+                      <InputNumberV2.Component />
+                      <InputNumberV2.HelperText />
+                      <InputNumberV2.ErrorLabel />
+                    </InputNumberV2.FormControl>
+                  </InputNumberV2>
 
                   <Flex>
                     <Button type='submit'>Submit</Button>

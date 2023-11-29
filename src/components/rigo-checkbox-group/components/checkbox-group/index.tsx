@@ -38,9 +38,11 @@ export const CheckboxgroupComponent = (props: any) => {
     <Wrap direction={props.direction || 'row'} spacing={props.spacing}>
       {options ? (
         options.map((item: any, idx: number) => {
-          let foundInCheckedValues = checkedValues?.find((cv: any) => {
-            return cv?.value === item.value || cv === item.value;
-          }) || null;
+          let foundInCheckedValues = Array.isArray(checkedValues)
+          ? checkedValues.find((cv: any) => {
+              return cv?.value === item.value || cv === item.value;
+            }) || null
+          : null;
 
           return (
             <WrapItem key={`${idx}`} w={props.width || '100%'}>

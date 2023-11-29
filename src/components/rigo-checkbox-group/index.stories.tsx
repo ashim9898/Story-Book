@@ -1,8 +1,8 @@
 import { Button, ChakraProvider, Container, Flex } from "@chakra-ui/react";
 import type { Meta } from "@storybook/react";
 import CheckboxGroupV2 from ".";
-import { FormProvider } from "../form-provider";
-import { ConnectForm } from "../connect-form";
+import { FormProvider } from "../connect-form/form-provider";
+import { ConnectForm } from "../connect-form/connect-form";
 
 const CHECKBOX_OPTIONS = [
   {
