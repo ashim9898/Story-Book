@@ -69,7 +69,7 @@ import { Button } from "@chakra-ui/react"
                     label="${
                           fields.charAt(0).toUpperCase() + fields.slice(1)
                         }"
-                    required={true}
+                    required={${json.fields[fields].required}}
                     {...inputProps}
                   />`;
   }
@@ -84,15 +84,21 @@ const json = {
   fields: {
     name: {
       type: "text",
+      required: true,
+
     },
     address: {
       type: "text",
+      required: true,
+
     },
     "Passport Number": {
       type: "number",
+      required: true,
     },
     email: {
       type: "email",
+      required: true,
     },
   },
 };
