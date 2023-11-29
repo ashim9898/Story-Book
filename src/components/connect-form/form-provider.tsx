@@ -1,9 +1,9 @@
 import React from 'react';
 import { FormProvider as RHFFormProvider, useForm } from 'react-hook-form';
-import { FormProviderProps } from './interface';
+import { FormProviderProps } from '../interface';
 /* eslint-disable-next-line */
 
-const FormProvider=(props:FormProviderProps)=> {
+export const FormProvider=(props:FormProviderProps)=> {
   const { defaultValues, children, onSubmit} = props;
   const methods = useForm({mode:'all', defaultValues});
 
@@ -13,4 +13,5 @@ const FormProvider=(props:FormProviderProps)=> {
     </RHFFormProvider>
   );
 }
-export default FormProvider
+
+//Issue banaune branch create garne ani tyeslai local ma lagera merge garne
