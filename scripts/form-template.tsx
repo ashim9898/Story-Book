@@ -1,4 +1,11 @@
-export const form=()=>{ 
+import FormProvider from "../src/components/form-provider"
+import ConnectForm from "../src/components/connect-form"
+import { Container } from "@chakra-ui/react"
+import InputBoxV2 from "../src/stories/inputbox"
+import { Flex } from "@chakra-ui/react"
+import { Button } from "@chakra-ui/react"
+  
+    export const form=()=>{ 
     const handleSubmit = (data: any) => 
     { 
         if(!data){
@@ -31,32 +38,32 @@ export const form=()=>{
                   flexDirection="column"
                   gap={3}
                 >
-                  <InputTextV2.Default
+                  <InputBoxV2.Default
                     name="name"
                     label="Name"
                     required={true}
                     {...inputProps}
                   />
-                  <InputTextV2.Default
+                  <InputBoxV2.Default
                     name="address"
                     label="Address"
                     required={true}
                     {...inputProps}
                   />
-                  <InputTextV2.Default
+                  <InputBoxV2.Default
                     name="passportNumber"
                     label="Passport Number"
                     required={true}
                     {...inputProps}
                   />
-                  <InputTextV2.Default
+                  <InputBoxV2.Default
                     name="email"
                     label="Email"
                     required={true}
                     {...inputProps}
                   />
                   <Flex>
-                    <Button type="submit">Submit</Button>
+                    <Button onSubmit={handleSubmit} type="submit">Submit</Button>
                   </Flex>
                 </Container>
             );

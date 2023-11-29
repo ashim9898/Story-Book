@@ -2,7 +2,14 @@ import * as fs from 'fs';
 
 
 const formMaker = (json) => {
-  let first = `export const form=()=>{ 
+  let first = `import FormProvider from "../src/components/form-provider"
+import ConnectForm from "../src/components/connect-form"
+import { Container } from "@chakra-ui/react"
+import InputBoxV2 from "../src/stories/inputbox"
+import { Flex } from "@chakra-ui/react"
+import { Button } from "@chakra-ui/react"
+  
+    export const form=()=>{ 
     const handleSubmit = (data: any) => 
     { 
         if(!data){
@@ -38,7 +45,7 @@ const formMaker = (json) => {
                 >`;
   let third = `
                   <Flex>
-                    <Button type="submit">Submit</Button>
+                    <Button onSubmit={handleSubmit} type="submit">Submit</Button>
                   </Flex>
                 </Container>
             );
@@ -57,7 +64,7 @@ const formMaker = (json) => {
       .replace(/\s+/g, "");
     defaultValues += `${fieldName}: '',`;
     formContent += `
-                  <InputTextV2.Default
+                  <InputBoxV2.Default
                     name="${fieldName}"
                     label="${
                           fields.charAt(0).toUpperCase() + fields.slice(1)
