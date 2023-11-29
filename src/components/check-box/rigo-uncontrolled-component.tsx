@@ -1,7 +1,7 @@
-import { Input } from '@chakra-ui/react';
-import { useInputBox } from './use-inputbox';
+import { Checkbox } from '@chakra-ui/react';
+import { useCheckbox } from './use-checkbox';
 
-export const InputBoxUncontrolled = (props: any) => {
+export const RigoUncontrolledComponent = (props: any) => {
   const { onChangeRHF, value: rhfValue, onChange, ...propsRest } = props;
   const {
     name,
@@ -13,24 +13,26 @@ export const InputBoxUncontrolled = (props: any) => {
     rule,
     onChange: _onChange,
     ...contextRest
-  } = useInputBox();
+  } = useCheckbox();
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const {value} = event.target
+  const handleChange = (value: any) => {
     _onChange?.(name, value);
     onChangeRHF?.(value);
   };
 
   const valueNormalized = rhfValue ?? value;
 
+  console.log(valueNormalized);
+
   const inputProps = {
     name,
-    value: valueNormalized,
+    isChecked: valueNormalized,
     ...contextRest,
-    ...propsRest,
+    // ...propsRest,
   };
   return (
-    <Input onChange={handleChange} {...inputProps} placeholder='Basic usage' />
-
+    <Checkbox onChange={handleChange} {...inputProps}>
+      {label}
+    </Checkbox>
   );
 };

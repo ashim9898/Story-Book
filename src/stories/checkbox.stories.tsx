@@ -1,19 +1,13 @@
 import { Button, ChakraProvider, Container, Flex } from '@chakra-ui/react';
 import type { Meta } from '@storybook/react';
-import TextAreaV2 from './index';
-import {FormProvider}  from '../components/connect-form/form-provider';
-import {ConnectForm} from '../components/connect-form/connect-form';
-
-//Json file form label 
-//read json
-//write to file
-//fn formmaker
-//formMaker
+import CheckboxV2 from './checkbox';
+import  {FormProvider}  from '../components/connect-form/form-provider';
+import  {ConnectForm} from '../components/connect-form/connect-form';
 
 
-const meta: Meta<typeof TextAreaV2> = {
-  title: 'V2/Forms/Input Textarea V2',
-  component: TextAreaV2,
+const meta: Meta<typeof CheckboxV2> = {
+  title: 'V2/Forms/Input Checkbox V2',
+  component: CheckboxV2,
 };
 
 export default meta;
@@ -30,7 +24,7 @@ export const Default = {
             });
           }}
           defaultValues={{
-           
+            empty: 0,
             default: 10,
             composed: 20,
           }}
@@ -56,16 +50,13 @@ export const Default = {
                   flexDirection='column'
                   gap={3}
                 >
-                  <TextAreaV2.Default
+                  <CheckboxV2.Default
                     name='default'
                     label='Default'
-                    required={true}
+                    required
                     {...inputProps}
                   />
 
-                  
-              
-                  
                   <Flex>
                     <Button type='submit'>Submit</Button>
                   </Flex>
@@ -91,7 +82,7 @@ export const Uncontrolled = {
           flexDirection='column'
           gap={3}
         >
-          <TextAreaV2.Default
+          <CheckboxV2.Default
             name='uncontrolled'
             label='Uncontrolled'
             value={0}
@@ -99,9 +90,6 @@ export const Uncontrolled = {
               console.log({ name, value });
             }}
           />
-          
-          
-
         </Container>
       </ChakraProvider>
     );
@@ -118,7 +106,9 @@ export const Empty = {
               data,
             });
           }}
-          
+          defaultValues={{
+            empty: 0,
+          }}
           showDevTool
         >
           <ConnectForm>
@@ -141,15 +131,13 @@ export const Empty = {
                   flexDirection='column'
                   gap={3}
                 >
-                  <TextAreaV2.Default
+                  <CheckboxV2.Default
                     name='empty'
                     label='Empty'
                     required={true}
                     {...inputProps}
                   />
 
-                 
-                  
                   <Flex>
                     <Button type='submit'>Submit</Button>
                   </Flex>
@@ -184,7 +172,7 @@ export const Composed = {
             {(formProps: any) => {
               const {
                 control,
-                formState: { errors, isValid },
+                formState: { errors },
               } = formProps;
 
               const inputProps = {
@@ -200,30 +188,21 @@ export const Composed = {
                   flexDirection='column'
                   gap={3}
                 >
-                  <TextAreaV2
+                  <CheckboxV2
                     name='composed'
                     label='Composed'
-                    isDisabled
                     required
-                    // rule={{
-                    //   validate: (id: number) => {
-                    //     return id >= 1 || 'Should Be more than 1 ';
-                    //   },
-                    // }}
                     {...inputProps}
                   >
-
-                    
-                
-                    <TextAreaV2.FormControl>
+                    <CheckboxV2.FormControl>
                       <Flex gap={2}>
-                        <TextAreaV2.FormLabel />
+                        <CheckboxV2.FormLabel />
                       </Flex>
-                      <TextAreaV2.Component />
-                      <TextAreaV2.HelperText />
-                      <TextAreaV2.ErrorLabel />
-                    </TextAreaV2.FormControl>
-                  </TextAreaV2>
+                      <CheckboxV2.Component />
+                      <CheckboxV2.HelperText />
+                      <CheckboxV2.ErrorLabel />
+                    </CheckboxV2.FormControl>
+                  </CheckboxV2>
 
                   <Flex>
                     <Button type='submit'>Submit</Button>
