@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 
-
-const formMaker = (json) => {
+ export const formMaker = (json:any) => {
   let first = `import {FormProvider} from "../src/components/connect-form/form-provider"
 import {ConnectForm} from "../src/components/connect-form/connect-form"
 import { Container } from "@chakra-ui/react"

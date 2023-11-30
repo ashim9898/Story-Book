@@ -1,8 +1,8 @@
 import { Button, ChakraProvider, Container, Flex } from '@chakra-ui/react';
 import type { Meta } from '@storybook/react';
 import CheckboxV2 from './checkbox';
-import  {FormProvider}  from '../components/connect-form/form-provider';
-import  {ConnectForm} from '../components/connect-form/connect-form';
+import  {FormProvider}  from '../connect-form/form-provider';
+import  {ConnectForm} from '../connect-form/connect-form';
 
 
 const meta: Meta<typeof CheckboxV2> = {
