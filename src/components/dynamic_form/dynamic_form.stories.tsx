@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import  DND  from './dynamic_form';
+import  DynamicForm  from './dynamic_form';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Example/Button',
-  component: DND,
+  title: 'Form',
+  component: DynamicForm,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
@@ -16,7 +16,7 @@ const meta = {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} satisfies Meta<typeof DND>;
+} satisfies Meta<typeof DynamicForm>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
