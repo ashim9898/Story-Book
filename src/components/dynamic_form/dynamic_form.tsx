@@ -7,7 +7,7 @@ type FormValues = {
       required: string;
     }[];
   };
-let renderCount =0 
+
 
 export default function DynamicForm(){
     const {register, handleSubmit ,formState:{errors}, control} = useForm({
@@ -19,7 +19,7 @@ export default function DynamicForm(){
         name:'form',
         control,
     })
-    renderCount++;
+  
 
     const onSubmit = (data: FormValues) => {
         let json = {
