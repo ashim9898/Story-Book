@@ -1,0 +1,89 @@
+/* Styles for the form */
+.form-main {
+    display: flex;
+    margin-left: 20px;
+  }
+  
+  .form-submain {
+    width: 30%;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  /* Form controls styling */
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .select,
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+  }
+  
+  /* Radio button styling */
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  /* Button styling */
+  button {
+    width: 60%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Editor container styling */
+  .editor-container {
+    width: 50%;
+    height: 150vh;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    color: #dcdcdc;
+    overflow: hidden; /* To hide scroll bars */
+  }
+  
+  /* Monaco Editor styling */
+  .monaco-editor {
+    height: 100%;
+  }
+  
+  /* Optional: Add a subtle transition for a smoother appearance */
+  .transition {
+    transition: background-color 0.3s ease;
+  }
+  .append-button{
+    background-color:green; 
+  }
+  .append-button:hover{
+    background-color:rgb(65, 199, 65); 
+    transition: background-color 0.3s ease;
+  }
+
+  .remove-button{
+    background-color:red; 
+  }
+  .remove-button:hover{
+    background-color:rgb(194, 38, 38); 
+    transition: background-color 0.3s ease;
+
+  }
+  
+  
