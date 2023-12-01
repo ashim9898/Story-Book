@@ -89,7 +89,7 @@
   .remove-button:hover{
     background-color:rgb(194, 38, 38); 
     transition: background-color 0.3s ease;
-
+    /* color:blue; */
   }
   
   
