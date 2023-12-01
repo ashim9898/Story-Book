@@ -70,6 +70,7 @@ import { Button } from "@chakra-ui/react"
                     label="${
                           fields.charAt(0).toUpperCase() + fields.slice(1)
                         }"
+                    type="${json.fields[fields].type}"
                     required={${json.fields[fields].required}}
                     {...inputProps}
                   />`;
@@ -115,72 +116,83 @@ export default function DynamicForm(){
         });
         setOutput(formMaker(json));
     };
+return(
+  <>
+    <div className="form-main"> 
+        <div className="form-submain"> 
+            <form onSubmit={handleSubmit(onSubmit)}>  
+                {fields.map((field,index)=>{  
+                    return (
+                    
 
-    return(
-        <div className="form-main">
-            <div className="form-submain">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    {fields.map((field,index)=>{
-                        return <section key={field.id} className="section">
-                            <label style={{ display: 'block', marginBottom: '8px' }} htmlFor="type">Type</label>
-                            <Controller 
-                                name={`form.${index}.type` as const}
-                                control={control}
-                                render={({ field }) => (
-                                    <select className="select" {...field}>
-                                        <option value="">Select...</option>
-                                        <option value="name1">inputbox</option>
-                                        <option value="name1">text-area</option>
-                                        <option value="name1">checkbox</option>
-                                        <option value="name1">checkbox-group</option>
-                                        <option value="name2">input-number</option>
-                                        <option value="name2">radio-group</option>
-                                    </select>
-                                )}
-                            />
-                            <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Name</label>
-                            <Controller 
-                                name={`form.${index}.name` as const}
-                                control={control}
-                                render={({ field }) => <input type="text" {...field} />}
-                            />
-                            <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Required</label>
-
-                      <Controller 
-                          name={`form.${index}.required` as const}
-                          control={control}
-                          render={({ field }) => (
-                              <div style={{display:'flex',justifyContent:'space-between'}}>
-                                  <label>
-                                      <input type="radio" value="Yes" checked={field.value === 'Yes'} onChange={() => field.onChange('Yes')} /> Yes
-                                  </label>
-                                  <label>
-                                      <input type="radio" value="No" checked={field.value === 'No'} onChange={() => field.onChange('No')} /> No
-                                  </label>
-                              </div>
-                          )}
-                      />
-                           <div style={{ display: 'flex', justifyContent:'space-between' ,flexDirection:'row' , alignItems: 'center' }}>
-                            <button className="append-button"  type="button" style={{width:'20%'}} onClick={()=>append({name:'',type:'', required:''})}>+</button>
-                            {index > 0 && <button className="remove-button" type="button" style={{width:'20%'}} onClick={()=>remove(index)}>X</button>}
-
-                        </div>
+                        <section key={field.id} className="section">  
+                            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>   
+                                <div style={{ margin: '20px 10px' }}>  
+                                
+                                    <label style={{ display: 'block', marginBottom: '8px' }} htmlFor="type">Type</label> 
+                                    <Controller   
+                                        name={`form.${index}.type` as const} 
+                                        control={control}  
+                                        render={({ field }) => ( 
+                                            <select className="select" {...field}>   
+                                                <option value="">Select...</option> 
+                                                <option value="inputbox">inputbox</option> 
+                                                <option value="text-area">text-area</option>   
+                                                <option value="checkbox">checkbox</option>
+                                                <option value="checkbox-group">checkbox-group</option>
+                                                <option value="input-number">input-number</option>
+                                                <option value="radio-group">radio-group</option>
+                                            </select>
+                                        )}
+                                    />
+                                </div>
+                                <div style={{ margin: '0 10px' }}>
+                                    <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Name</label>
+                                    <Controller 
+                                        name={`form.${index}.name` as const}
+                                        control={control}
+                                        render={({ field }) => <input type="text" {...field} />}
+                                    />
+                                </div>
+                                <div style={{ margin: '0 10px 10px' }}>
+                                    <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Required</label>
+                                    <Controller 
+                                        name={`form.${index}.required` as const}
+                                        control={control}
+                                        render={({ field }) => (
+                                            <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                <label><input type="radio" value="Yes" checked={field.value === 'Yes'} onChange={() => field.onChange('Yes')} /> Yes
+                                                </label>
+                                                <label>
+                                                    <input type="radio" value="No" checked={field.value === 'No'} onChange={() => field.onChange('No')} /> No
+                                                </label>
+                                            </div>
+                                        )}
+                                    />
+                                </div>
+                            </div>
+                            <div style={{ display: 'flex', margin:"0 10px 0 10px" ,justifyContent:'space-between' ,flexDirection:'row' , alignItems: 'center' }}>
+                                <button className="append-button"  type="button" style={{width:'15%'}} onClick={()=>append({name:'',type:'', required:''})}>+</button>
+                                {index > 0 && <button className="remove-button" type="button" style={{width:'15%', marginRight:"10px"}} onClick={()=>remove(index)}>X</button>}
+                            </div>
                         </section>
-                    })}
-                    <br/>
-                    <button style={{width:"100%"}} type="submit">Submit</button>
-                </form>
-            </div>
-            <div style={{ width: '100%', marginLeft:'20px' ,height: '150vh', backgroundColor: '#1e1e1e', borderRadius: '5px', color: '#dcdcdc' }}>
-                <Editor
-                    defaultLanguage="json"
-                    defaultValue=""
-                    value={output}
-                    className="editorbox"
-                    options={{ theme: 'vs-dark' }}
-                />
-            </div>
+                      
+                    )
+                })}
+                <br/>
+                <button className="submit-button" style={{width:"100%"}} type="submit">Submit</button>
+            </form>
         </div>
-    )
+        <div style={{ width: '60%', margin:'0 20px 0 20px' ,height: '150vh', backgroundColor: '#1e1e1e', borderRadius: '5px', color: '#dcdcdc' }}>
+            <Editor defaultLanguage="json" defaultValue="" value={output} className="editorbox"
+                options={{ theme: 'vs-dark' }}
+            />
+        </div>
+    </div>
+    </>
+)
+
+  
+  
     
 }
