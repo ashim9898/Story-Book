@@ -1,10 +1,9 @@
-import React from 'react'
 
 const FormLabel = (props:any) => {
     const {label} = props
   return (
     <div>
-      
+      {label}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import {  useFieldArray, useForm, Controller } from "react-hook-form";
 import { Editor } from "@monaco-editor/react";
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import './dynamicForm.css'
 export const formMaker = (json:any) => {
 let first = `import {FormProvider} from "../src/components/connect-form/form-provider"
@@ -90,7 +90,7 @@ type FormValues = {
 };
 
 export default function DynamicForm(){
-    const {register, handleSubmit ,formState:{errors}, control} = useForm({
+    const { handleSubmit , control} = useForm({
         defaultValues:{
             form:[{name:'', type:'', required:''}]
         }

@@ -1,6 +1,5 @@
-import React from 'react';
 import { FormProvider as RHFFormProvider, useForm } from 'react-hook-form';
-import { FormProviderProps } from '../interface';
+import { FormProviderProps } from './interface';
 /* eslint-disable-next-line */
 
 export const FormProvider=(props:FormProviderProps)=> {

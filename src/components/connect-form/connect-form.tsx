@@ -1,5 +1,5 @@
 import { useFormContext } from 'react-hook-form';
-import { ConnectFormProps } from '../interface';
+import { ConnectFormProps } from './interface';
 /* eslint-disable-next-line */
 
 export const ConnectForm = (props:ConnectFormProps) => {

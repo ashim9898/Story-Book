@@ -13,7 +13,7 @@ export default meta;
 
 export const Default = {
   args: {},
-  render: (args: any) => {
+  render: () => {
     return (
       <ChakraProvider>
         <FormProvider
@@ -71,7 +71,7 @@ export const Default = {
 
 export const Uncontrolled = {
   args: {},
-  render: (args: any) => {
+  render: () => {
     return (
       <ChakraProvider>
         <Container
@@ -96,7 +96,7 @@ export const Uncontrolled = {
 };
 export const Empty = {
   args: {},
-  render: (args: any) => {
+  render: () => {
     return (
       <ChakraProvider>
         <FormProvider
@@ -151,7 +151,7 @@ export const Empty = {
 };
 export const Composed = {
   args: {},
-  render: (args: any) => {
+  render: () => {
     return (
       <ChakraProvider>
         <FormProvider
@@ -171,7 +171,7 @@ export const Composed = {
             {(formProps: any) => {
               const {
                 control,
-                formState: { errors, isValid },
+                formState: { errors },
               } = formProps;
 
               const inputProps = {

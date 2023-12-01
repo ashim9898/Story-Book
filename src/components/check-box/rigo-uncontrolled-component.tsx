@@ -2,7 +2,7 @@ import { Checkbox } from '@chakra-ui/react';
 import { useCheckbox } from './use-checkbox';
 
 export const RigoUncontrolledComponent = (props: any) => {
-  const { onChangeRHF, value: rhfValue, onChange, ...propsRest } = props;
+  const { onChangeRHF, value: rhfValue } = props;
   const {
     name,
     value,

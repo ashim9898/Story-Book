@@ -1,17 +1,14 @@
-import * as fromFormHelpers from '../@form-helper';
 import FormErrorLable from './form-label';
-import { FormErrorLabelProps } from '../interface';
+import { FormErrorLabelProps } from './interface';
 import { useInputBox } from './use-inputbox';
 
 export const InputBoxErrorLabel = (props: FormErrorLabelProps) => {
-  const { name, errors, required } = useInputBox();
+  const {  required } = useInputBox();
 
   if (!required) {
     return null;
   }
 
-  const error =
-    errors && fromFormHelpers.resolveObjectValueByPath(errors, name)?.message;
 
   return (
     <FormErrorLable

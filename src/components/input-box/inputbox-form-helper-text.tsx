@@ -1,5 +1,5 @@
 import { FormHelperText } from '@chakra-ui/react';
-import { FormHelperTextPropsType } from '../interface';
+import { FormHelperTextPropsType } from './interface';
 import { useInputBox } from './use-inputbox';
 
 export const InputBoxFormHelperText = (props: FormHelperTextPropsType) => {
