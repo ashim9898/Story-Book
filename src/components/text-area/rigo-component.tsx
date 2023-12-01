@@ -1,4 +1,4 @@
-import { ComponentProps } from '../interface';
+import { ComponentProps } from './interface';
 import { useTextArea } from './use-textarea';
 import { RigoRhfComponent } from './rigo-rhf-component';
 import { RigoUncontrolledComponent } from './rigo-uncontrolled-component';

@@ -1,4 +1,4 @@
-import { InputNumberProps } from '../interface';
+import { InputNumberProps } from './interface';
 import { InputBoxContext } from './input-box-context';
 
 export const InputBox = (props: InputNumberProps) => {

@@ -1,5 +1,5 @@
 import { Flex } from '@chakra-ui/react';
-import { InputNumberProps } from '../interface';
+import { InputNumberProps } from './interface';
 import { InputBox } from './inputbox';
 import { InputBoxFormControl } from './inputbox-form-control';
 import { InputBoxFormHelperText } from './inputbox-form-helper-text';

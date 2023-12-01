@@ -1,6 +1,6 @@
 import { Button, ChakraProvider, Container, Flex } from '@chakra-ui/react';
 import type { Meta } from '@storybook/react';
-import CheckboxV2 from './checkbox';
+import CheckboxV2 from '.';
 import  {FormProvider}  from '../connect-form/form-provider';
 import  {ConnectForm} from '../connect-form/connect-form';
 
@@ -14,7 +14,7 @@ export default meta;
 
 export const Default = {
   args: {},
-  render: (args: any) => {
+  render: () => {
     return (
       <ChakraProvider>
         <FormProvider
@@ -72,7 +72,7 @@ export const Default = {
 
 export const Uncontrolled = {
   args: {},
-  render: (args: any) => {
+  render: () => {
     return (
       <ChakraProvider>
         <Container
@@ -97,7 +97,7 @@ export const Uncontrolled = {
 };
 export const Empty = {
   args: {},
-  render: (args: any) => {
+  render: () => {
     return (
       <ChakraProvider>
         <FormProvider
@@ -152,7 +152,7 @@ export const Empty = {
 };
 export const Composed = {
   args: {},
-  render: (args: any) => {
+  render: () => {
     return (
       <ChakraProvider>
         <FormProvider

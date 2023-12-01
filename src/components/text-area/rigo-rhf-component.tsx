@@ -2,7 +2,7 @@ import { Controller,useFormContext  } from 'react-hook-form';
 import { isEmpty } from 'lodash';
 
 import * as fromFormHelpers from '../@form-helper';
-import { ControlledComponentProps } from '../interface';
+import { ControlledComponentProps } from './interface';
 import { useTextArea } from './use-textarea';
 import { RigoUncontrolledComponent } from './rigo-uncontrolled-component';
 

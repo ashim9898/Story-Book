@@ -1,5 +1,5 @@
 import { FormHelperText } from '@chakra-ui/react';
-import { FormHelperTextPropsType } from '../interface';
+import { FormHelperTextPropsType } from './interface';
 import { useTextArea } from './use-textarea';
 
 export const RigoFormHelperText = (props: FormHelperTextPropsType) => {

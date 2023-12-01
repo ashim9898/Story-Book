@@ -8,7 +8,7 @@ import {
 import { useInputNumber } from './use-input-number';
 
 export const RigoUncontrolledComponent = (props: any) => {
-  const { onChangeRHF, value: rhfValue, onChange, ...propsRest } = props;
+  const { onChangeRHF, value: rhfValue } = props;
   const {
     name,
     value,

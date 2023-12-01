@@ -1,6 +1,5 @@
 import {
   InputProps,
-  NumberInputProps,
   FormControlProps,
   FormHelperTextProps,
   FormLabelProps,

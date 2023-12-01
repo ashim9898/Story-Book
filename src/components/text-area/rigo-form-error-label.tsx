@@ -1,6 +1,6 @@
 import * as fromFormHelpers from '../@form-helper';
 import FormErrorLable from './form-label';
-import { FormErrorLabelProps } from '../interface';
+import { FormErrorLabelProps } from './interface';
 import { useTextArea } from './use-textarea';
 
 export const RigoFormErrorLabel = (props: FormErrorLabelProps) => {
@@ -10,7 +10,6 @@ export const RigoFormErrorLabel = (props: FormErrorLabelProps) => {
     return null;
   }
 
-  const error =
     errors && fromFormHelpers.resolveObjectValueByPath(errors, name)?.message;
 
   return (
