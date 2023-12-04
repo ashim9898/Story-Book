@@ -1,98 +1,94 @@
 /* Styles for the form */
 .form-main {
-    display: flex;
-    margin-left: 200px;
-    margin-top: 80px;
-    justify-content: center;
-    
-  
-  }
-  
-  .form-submain {
-    width: 10vw;
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-  }
-  
-  .section {
-    margin-bottom: 20px;
-  }
-  
-  /* Form controls styling */
-  label {
-    display: block;
-    margin-bottom: 8px;
-  }
-  
-  .select,
-  input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 8px;
-    box-sizing: border-box;
-  }
-  
-  /* Radio button styling */
-  input[type="radio"] {
-    margin-right: 5px;
-  }
-  
-  /* Button styling */
-  .submit-button {
-    width: 60%;
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .submit-button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Editor container styling */
-  .editor-container {
-    width: 100%;
-    height: 150vh;
-    background-color: #1e1e1e;
-    border-radius: 5px;
-    color: #dcdcdc;
-    overflow: hidden; 
-  }
-  
-  /* Monaco Editor styling */
-  .monaco-editor {
-    height: 100%;
-    width: 100%;
-  }
-  
-  .transition {
-    transition: background-color 0.3s ease;
-  }
-  .append-button{
-    background-color:green; 
-    color: white;
-    font-size: 18px;
-  }
-  .append-button:hover{
-    background-color:rgb(65, 199, 65); 
-    transition: background-color 0.3s ease;
-  }
+  display: flex;
+  margin-left: 20px;
+  margin-top: 80px;
+  justify-content: center;
+}
 
-  .remove-button{
-    background-color:red; 
-    font-size: 18px;
-    color: white;
+.form-submain {
+  width: 60%;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}
 
-  }
-  .remove-button:hover{
-    background-color:rgb(194, 38, 38); 
-    transition: background-color 0.3s ease;
-    /* color:blue; */
-  }
-  
-  
+.section {
+  margin-bottom: 20px;
+}
+
+/* Form controls styling */
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.select,
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+}
+
+/* Radio button styling */
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Button styling */
+.submit-button {
+  width: 60%;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Editor container styling */
+.editor-container {
+  width: 100%;
+  height: 150vh;
+  background-color: #1e1e1e;
+  border-radius: 5px;
+  color: #dcdcdc;
+  overflow: hidden; 
+}
+
+/* Monaco Editor styling */
+.monaco-editor {
+  height: 100%;
+}
+
+.transition {
+  transition: background-color 0.3s ease;
+}
+.append-button{
+  background-color:green; 
+  color: white;
+  font-size: 18px;
+}
+.append-button:hover{
+  background-color:rgb(65, 199, 65); 
+  transition: background-color 0.3s ease;
+}
+
+.remove-button{
+  background-color:red; 
+  font-size: 18px;
+  color: white;
+
+}
+.remove-button:hover{
+  background-color:rgb(194, 38, 38); 
+  transition: background-color 0.3s ease;
+
+}
+
