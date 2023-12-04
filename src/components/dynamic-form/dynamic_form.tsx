@@ -118,7 +118,7 @@ let thirdModal = `
 
     let fieldname1 = json.fields[fields].type
       .replace(/-([a-z])/g, function (g:any) { return g[1].toUpperCase(); })
-      .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word:any, index) {
+      .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word:any, index:any) {
         return word.toUpperCase();
       })
       .replace(/\s+/g, "");
