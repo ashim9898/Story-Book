@@ -4,8 +4,8 @@ import  { useState } from 'react';
 import './dynamicForm.css'
 import { Checkbox } from "@chakra-ui/react";
 export const formMaker = (json:any, isChecked: boolean) => {
-let first = `import {FormProvider} from "../src/components/connect-form/form-provider"
-import {ConnectForm} from "../src/components/connect-form/connect-form"
+let first = `import {FormProvider} from "../connect-form/form-provider"
+import {ConnectForm} from "../connect-form/connect-form"
 import { Container } from "@chakra-ui/react"
 import InputBoxV2 from "../src/components/input-box"
 import { Flex } from "@chakra-ui/react"
@@ -59,11 +59,11 @@ import { Button } from "@chakra-ui/react"
     )
 }`;
 
-let firstModal =  `import {Checkbox,Modal,ModalOverlay,ModalContent,ModalHeader,ModalBody,ModalCloseButton,useDisclosure,} from "@chakra-ui/react";
+let firstModal =  `import {Modal,ModalOverlay,ModalContent,ModalHeader,ModalBody,ModalCloseButton,useDisclosure,} from "@chakra-ui/react";
 import {FormProvider} from "../src/components/connect-form/form-provider"
 import {ConnectForm} from "../src/components/connect-form/connect-form"
 import { Container } from "@chakra-ui/react"
-import InputBoxV2 from "../src/components/input-box"
+
 import { Flex } from "@chakra-ui/react"
 import { Button } from "@chakra-ui/react"
 import { useState } from "react";
@@ -108,27 +108,36 @@ let thirdModal = `
   
   let defaultValues = "";
   let formContent = "";
+  let importStatements = "";
   for (let fields in json.fields) {
     let fieldName = fields
       .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
         return index === 0 ? word.toLowerCase() : word.toUpperCase();
       })
       .replace(/\s+/g, "");
+
+    let fieldname1 = json.fields[fields].type
+      .replace(/-([a-z])/g, function (g:any) { return g[1].toUpperCase(); })
+      .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word:any, index) {
+        return word.toUpperCase();
+      })
+      .replace(/\s+/g, "");
     defaultValues += `${fieldName}: '',`;
+    importStatements += `import {${fieldname1}V2} from "../${json.fields[fields].type}/index";\n`;
+
     formContent += `
-                  <InputBoxV2.Default
+                  <${fieldname1}V2.Default
                     name="${fieldName}"
                     label="${
                           fields.charAt(0).toUpperCase() + fields.slice(1)
                         }"
-                    type="${json.fields[fields].type}"
                     required={${json.fields[fields].required}}
                     {...inputProps}
                   />`;
-    
-  }
-  const finalized = first + defaultValues + second + formContent + third;
-  const finalizedModal = firstModal + defaultValues + second + formContent + thirdModal;
+}
+
+  const finalized = importStatements+first + defaultValues + second + formContent + third;
+  const finalizedModal = importStatements+firstModal + defaultValues + second + formContent + thirdModal;
   console.log({
     finalized,
   });
@@ -179,7 +188,11 @@ return(
   <>
     <div className="form-main"> 
         <div className="form-submain"> 
-            <form onSubmit={handleSubmit(onSubmit)}>  
+            <form onSubmit={handleSubmit(onSubmit)}> 
+            <div style={{ margin: '0 10px 10px' }}>
+                                <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Modal</label>
+                                <Checkbox style={{marginLeft:"10px"}} isChecked={isChecked} onChange={handleCheckboxChange}></Checkbox>
+                                </div> 
                 {fields.map((field,index)=>{  
                     return (
                     
@@ -195,9 +208,9 @@ return(
                                         render={({ field }) => ( 
                                             <select className="select" {...field}>   
                                                 <option value="">Select...</option> 
-                                                <option value="inputbox">inputbox</option> 
+                                                <option value="input-box">inputbox</option> 
                                                 <option value="text-area">text-area</option>   
-                                                <option value="checkbox">checkbox</option>
+                                                <option value="check-box">checkbox</option>
                                                 <option value="checkbox-group">checkbox-group</option>
                                                 <option value="input-number">input-number</option>
                                                 <option value="radio-group">radio-group</option>
@@ -229,10 +242,7 @@ return(
                                         )}
                                     />
                                 </div>
-                                <div style={{ margin: '0 10px 10px' }}>
-                                <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Modal</label>
-                                <Checkbox style={{marginLeft:"10px"}} isChecked={isChecked} onChange={handleCheckboxChange}></Checkbox>
-                                </div>
+                                
                             </div>
                             
                             <div style={{ display: 'flex', margin:"0 10px 0 10px" ,justifyContent:'space-between' ,flexDirection:'row' , alignItems: 'center' }}>
