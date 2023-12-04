@@ -1,3 +1,4 @@
+import { Checkbox, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, useDisclosure } from "@chakra-ui/react";
 import {  useFieldArray, useForm, Controller } from "react-hook-form";
 import { Editor } from "@monaco-editor/react";
 import  { useState } from 'react';
@@ -91,7 +92,9 @@ type FormValues = {
 };
 
 export default function DynamicForm(){
-    const { handleSubmit , control} = useForm({
+  const { isOpen, onOpen, onClose } = useDisclosure();
+    const [isChecked, setIsChecked] = useState(false)
+    const { handleSubmit , control, setValue} = useForm({
         defaultValues:{
             form:[{name:'', type:'', required:''}]
         }
@@ -115,75 +118,101 @@ export default function DynamicForm(){
           };
         });
         setOutput(formMaker(json));
+        onClose();
+        setIsChecked(false)
     };
+    const handleCheckboxChange = (e:any) => {
+      setIsChecked(e.target.checked);
+      if (e.target.checked) {
+        onOpen();
+      } else {
+        onClose();
+      }
+    };
+
+
+    
+  
 return(
   <>
     <div className="form-main"> 
         <div className="form-submain"> 
-            <form onSubmit={handleSubmit(onSubmit)}>  
-                {fields.map((field,index)=>{  
-                    return (
-                    
-
-                        <section key={field.id} className="section">  
-                            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>   
-                                <div style={{ margin: '20px 10px' }}>  
-                                
-                                    <label style={{ display: 'block', marginBottom: '8px' }} htmlFor="type">Type</label> 
-                                    <Controller   
-                                        name={`form.${index}.type` as const} 
-                                        control={control}  
-                                        render={({ field }) => ( 
-                                            <select className="select" {...field}>   
-                                                <option value="">Select...</option> 
-                                                <option value="inputbox">inputbox</option> 
-                                                <option value="text-area">text-area</option>   
-                                                <option value="checkbox">checkbox</option>
-                                                <option value="checkbox-group">checkbox-group</option>
-                                                <option value="input-number">input-number</option>
-                                                <option value="radio-group">radio-group</option>
-                                            </select>
-                                        )}
-                                    />
-                                </div>
-                                <div style={{ margin: '0 10px' }}>
-                                    <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Name</label>
-                                    <Controller 
-                                        name={`form.${index}.name` as const}
-                                        control={control}
-                                        render={({ field }) => <input type="text" {...field} />}
-                                    />
-                                </div>
-                                <div style={{ margin: '0 10px 10px' }}>
-                                    <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Required</label>
-                                    <Controller 
-                                        name={`form.${index}.required` as const}
-                                        control={control}
-                                        render={({ field }) => (
-                                            <div style={{display:'flex',justifyContent:'space-between'}}>
-                                                <label><input type="radio" value="Yes" checked={field.value === 'Yes'} onChange={() => field.onChange('Yes')} /> Yes
-                                                </label>
-                                                <label>
-                                                    <input type="radio" value="No" checked={field.value === 'No'} onChange={() => field.onChange('No')} /> No
-                                                </label>
-                                            </div>
-                                        )}
-                                    />
-                                </div>
+        <Checkbox isChecked={isChecked} onChange={handleCheckboxChange}>
+            Checkbox
+          </Checkbox>        
+          {isChecked ?     
+          
+          
+          <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Your Form</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              {fields.map((field, index) => {
+                return (
+                  <section key={field.id} className="section">
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+                      <div style={{ margin: '20px 10px' }}>
+                        <label style={{ display: 'block', marginBottom: '8px' }} htmlFor="type">Type</label>
+                        <Controller
+                          name={`form.${index}.type` as const}
+                          control={control}
+                          render={({ field }) => (
+                            <select style={{border:'1px solid black'}} className="select" {...field}>
+                              <option value="">Select...</option>
+                              <option value="inputbox">inputbox</option>
+                              <option value="text-area">text-area</option>
+                              <option value="checkbox">checkbox</option>
+                              <option value="checkbox-group">checkbox-group</option>
+                              <option value="input-number">input-number</option>
+                              <option value="radio-group">radio-group</option>
+                            </select>
+                          )}
+                        />
+                      </div>
+                      <div style={{ margin: '0 10px' }}>
+                        <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Name</label>
+                        <Controller
+                          name={`form.${index}.name` as const}
+                          control={control}
+                          render={({ field }) => <input style={{border:'1px solid black'}} type="text" {...field} />}
+                        />
+                      </div>
+                      <div style={{ margin: '0 10px 10px' }}>
+                        <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Required</label>
+                        <Controller
+                          name={`form.${index}.required` as const}
+                          control={control}
+                          render={({ field }) => (
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                              <label><input type="radio" value="Yes" checked={field.value === 'Yes'} onChange={() => field.onChange('Yes')} /> Yes
+                              </label>
+                              <label>
+                                <input type="radio" value="No" checked={field.value === 'No'} onChange={() => field.onChange('No')} /> No
+                              </label>
                             </div>
-                            <div style={{ display: 'flex', margin:"0 10px 0 10px" ,justifyContent:'space-between' ,flexDirection:'row' , alignItems: 'center' }}>
-                                <button className="append-button"  type="button" style={{width:'15%'}} onClick={()=>append({name:'',type:'', required:''})}>+</button>
-                                {index > 0 && <button className="remove-button" type="button" style={{width:'15%', marginRight:"10px"}} onClick={()=>remove(index)}>X</button>}
-                            </div>
-                        </section>
-                      
-                    )
-                })}
-                <br/>
-                <button className="submit-button" style={{width:"100%"}} type="submit">Submit</button>
-            </form>
+                          )}
+                        />
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', margin: "0 10px 0 10px", justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center' }}>
+                      <button className="append-button" type="button" style={{ width: '15%' }} onClick={() => append({ name: '', type: '', required: '' })}>+</button>
+                      {index > 0 && <button className="remove-button" type="button" style={{ width: '15%', marginRight: "10px" }} onClick={() => remove(index)}>X</button>}
+                    </div>
+                  </section>
+                )
+              })}
+              <br />
+              <button className="submit-button" style={{ width: "100%" }} type="submit">Submit</button>
+            </form>   
+          </ModalBody>
+        </ModalContent>
+      </Modal>  
+      : null } 
         </div>
-        <div style={{ width: '60%', margin:'0 20px 0 20px' ,height: '150vh', backgroundColor: '#1e1e1e', borderRadius: '5px', color: '#dcdcdc' }}>
+        <div style={{ width: '50vw', margin:'0 20px 0 20px' ,height: '150vh', backgroundColor: '#1e1e1e', borderRadius: '5px', color: '#dcdcdc' }}>
             <Editor defaultLanguage="json" defaultValue="" value={output} className="editorbox"
                 options={{ theme: 'vs-dark' }}
             />
@@ -191,8 +220,4 @@ return(
     </div>
     </>
 )
-
-  
-  
-    
 }
