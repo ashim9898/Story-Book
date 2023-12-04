@@ -1,12 +1,8 @@
-import { Route, Routes } from "react-router-dom"
-import DynamicForm from '../src/components/dynamic_form/dynamic_form';
+import "./App.css";
+import { AppProviders } from "./providers";
+
 function App() {
-  return (
-    <Routes>
-     
-     <Route path="/" element={<DynamicForm />} />
-    </Routes>
-  );
+  return <AppProviders/>;
 }
 
 export default App;

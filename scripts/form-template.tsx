@@ -1,7 +1,7 @@
-import {FormProvider} from "../src/components/connect-form/form-provider"
-import {ConnectForm} from "../src/components/connect-form/connect-form"
+import {FormProvider} from "../src/components/forms/connect-form/form-provider"
+import {ConnectForm} from "../src/components/forms/connect-form/connect-form"
 import { Container } from "@chakra-ui/react"
-import InputBoxV2 from "../src/components/input-box"
+import InputBoxV2 from "../src/components/forms/input-box"
 import { Flex } from "@chakra-ui/react"
 import { Button } from "@chakra-ui/react"
   
