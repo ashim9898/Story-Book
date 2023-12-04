@@ -1,8 +1,8 @@
 import { Button, ChakraProvider, Container, Flex } from '@chakra-ui/react';
 import type { Meta } from '@storybook/react';
 import InputNumberV2 from './index.tsx';
-import { FormProvider } from '../connect-form/form-provider';
-import { ConnectForm } from '../connect-form/connect-form';
+import { FormProvider } from '../connect-form/form-provider.tsx';
+import { ConnectForm } from '../connect-form/connect-form.tsx';
 
 const meta: Meta<typeof InputNumberV2> = {
   title: 'V2/Forms/Input Number V2',

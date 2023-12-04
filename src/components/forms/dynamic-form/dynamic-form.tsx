@@ -7,7 +7,6 @@ export const formMaker = (json:any, isChecked: boolean) => {
 let first = `import {FormProvider} from "../connect-form/form-provider"
 import {ConnectForm} from "../connect-form/connect-form"
 import { Container } from "@chakra-ui/react"
-import InputBoxV2 from "../src/components/input-box"
 import { Flex } from "@chakra-ui/react"
 import { Button } from "@chakra-ui/react"
   
