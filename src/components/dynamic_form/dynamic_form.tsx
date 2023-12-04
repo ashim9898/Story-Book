@@ -1,9 +1,9 @@
-import { Checkbox, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, useDisclosure } from "@chakra-ui/react";
 import {  useFieldArray, useForm, Controller } from "react-hook-form";
 import { Editor } from "@monaco-editor/react";
 import  { useState } from 'react';
 import './dynamicForm.css'
-export const formMaker = (json:any) => {
+import { Checkbox } from "@chakra-ui/react";
+export const formMaker = (json:any, isChecked: boolean) => {
 let first = `import {FormProvider} from "../src/components/connect-form/form-provider"
 import {ConnectForm} from "../src/components/connect-form/connect-form"
 import { Container } from "@chakra-ui/react"
@@ -25,6 +25,8 @@ import { Button } from "@chakra-ui/react"
             console.log({ data });
           }}
           defaultValues={{`;
+  
+
   let second = `}} 
           showDevTool
         >
@@ -56,6 +58,54 @@ import { Button } from "@chakra-ui/react"
         </FormProvider>
     )
 }`;
+
+let firstModal =  `import {Checkbox,Modal,ModalOverlay,ModalContent,ModalHeader,ModalBody,ModalCloseButton,useDisclosure,} from "@chakra-ui/react";
+import {FormProvider} from "../src/components/connect-form/form-provider"
+import {ConnectForm} from "../src/components/connect-form/connect-form"
+import { Container } from "@chakra-ui/react"
+import InputBoxV2 from "../src/components/input-box"
+import { Flex } from "@chakra-ui/react"
+import { Button } from "@chakra-ui/react"
+import { useState } from "react";
+   export const form=()=>{ 
+   const { isOpen, onOpen, onClose } = useDisclosure();
+   const [isChecked, setIsChecked] = useState(false);
+   const handleSubmit = (data: any) => 
+   { 
+     if(!data){
+       return
+     }
+     console.log(data)
+  } 
+  return (
+  <Modal isOpen={isOpen} onClose={onClose}>
+  <ModalOverlay />
+  <ModalContent>
+    <ModalHeader>Your Form</ModalHeader>
+    <ModalCloseButton />
+    <ModalBody>
+    <FormProvider
+      onSubmit={(data: any) => {
+        console.log({ data });
+        onClose();
+        setIsChecked(false);
+      }}
+      defaultValues={{`;
+let thirdModal = `
+              <Flex>
+                <Button onSubmit={handleSubmit} type="submit">Submit</Button>
+              </Flex>
+            </Container>
+        );
+      }}
+      </ConnectForm>
+    </FormProvider>
+    </ModalBody>
+    </ModalContent>
+  </Modal>
+)
+}`;
+  
   let defaultValues = "";
   let formContent = "";
   for (let fields in json.fields) {
@@ -75,12 +125,14 @@ import { Button } from "@chakra-ui/react"
                     required={${json.fields[fields].required}}
                     {...inputProps}
                   />`;
+    
   }
   const finalized = first + defaultValues + second + formContent + third;
+  const finalizedModal = firstModal + defaultValues + second + formContent + thirdModal;
   console.log({
     finalized,
   });
-  return finalized
+  return isChecked ? finalizedModal : finalized;
 };
 
 type FormValues = {
@@ -92,9 +144,8 @@ type FormValues = {
 };
 
 export default function DynamicForm(){
-  const { isOpen, onOpen, onClose } = useDisclosure();
-    const [isChecked, setIsChecked] = useState(false)
-    const { handleSubmit , control, setValue} = useForm({
+  const [isChecked, setIsChecked] = useState(false);
+    const { handleSubmit , control} = useForm({
         defaultValues:{
             form:[{name:'', type:'', required:''}]
         }
@@ -117,102 +168,86 @@ export default function DynamicForm(){
             required: item.required 
           };
         });
-        setOutput(formMaker(json));
-        onClose();
-        setIsChecked(false)
+        setOutput(formMaker(json, isChecked));
+      
     };
-    const handleCheckboxChange = (e:any) => {
+
+    const handleCheckboxChange = (e: any) => {
       setIsChecked(e.target.checked);
-      if (e.target.checked) {
-        onOpen();
-      } else {
-        onClose();
-      }
     };
-
-
-    
-  
 return(
   <>
     <div className="form-main"> 
         <div className="form-submain"> 
-        <Checkbox isChecked={isChecked} onChange={handleCheckboxChange}>
-            Checkbox
-          </Checkbox>        
-          {isChecked ?     
-          
-          
-          <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Your Form</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              {fields.map((field, index) => {
-                return (
-                  <section key={field.id} className="section">
-                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                      <div style={{ margin: '20px 10px' }}>
-                        <label style={{ display: 'block', marginBottom: '8px' }} htmlFor="type">Type</label>
-                        <Controller
-                          name={`form.${index}.type` as const}
-                          control={control}
-                          render={({ field }) => (
-                            <select style={{border:'1px solid black'}} className="select" {...field}>
-                              <option value="">Select...</option>
-                              <option value="inputbox">inputbox</option>
-                              <option value="text-area">text-area</option>
-                              <option value="checkbox">checkbox</option>
-                              <option value="checkbox-group">checkbox-group</option>
-                              <option value="input-number">input-number</option>
-                              <option value="radio-group">radio-group</option>
-                            </select>
-                          )}
-                        />
-                      </div>
-                      <div style={{ margin: '0 10px' }}>
-                        <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Name</label>
-                        <Controller
-                          name={`form.${index}.name` as const}
-                          control={control}
-                          render={({ field }) => <input style={{border:'1px solid black'}} type="text" {...field} />}
-                        />
-                      </div>
-                      <div style={{ margin: '0 10px 10px' }}>
-                        <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Required</label>
-                        <Controller
-                          name={`form.${index}.required` as const}
-                          control={control}
-                          render={({ field }) => (
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                              <label><input type="radio" value="Yes" checked={field.value === 'Yes'} onChange={() => field.onChange('Yes')} /> Yes
-                              </label>
-                              <label>
-                                <input type="radio" value="No" checked={field.value === 'No'} onChange={() => field.onChange('No')} /> No
-                              </label>
+            <form onSubmit={handleSubmit(onSubmit)}>  
+                {fields.map((field,index)=>{  
+                    return (
+                    
+
+                        <section key={field.id} className="section">  
+                            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>   
+                                <div style={{ margin: '20px 10px' }}>  
+                                
+                                    <label style={{ display: 'block', marginBottom: '8px' }} htmlFor="type">Type</label> 
+                                    <Controller   
+                                        name={`form.${index}.type` as const} 
+                                        control={control}  
+                                        render={({ field }) => ( 
+                                            <select className="select" {...field}>   
+                                                <option value="">Select...</option> 
+                                                <option value="inputbox">inputbox</option> 
+                                                <option value="text-area">text-area</option>   
+                                                <option value="checkbox">checkbox</option>
+                                                <option value="checkbox-group">checkbox-group</option>
+                                                <option value="input-number">input-number</option>
+                                                <option value="radio-group">radio-group</option>
+                                            </select>
+                                        )}
+                                    />
+                                </div>
+                                <div style={{ margin: '0 10px' }}>
+                                    <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Name</label>
+                                    <Controller 
+                                        name={`form.${index}.name` as const}
+                                        control={control}
+                                        render={({ field }) => <input type="text" {...field} />}
+                                    />
+                                </div>
+                                <div style={{ margin: '0 10px 10px' }}>
+                                    <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Required</label>
+                                    <Controller 
+                                        name={`form.${index}.required` as const}
+                                        control={control}
+                                        render={({ field }) => (
+                                            <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                <label><input type="radio" value="Yes" checked={field.value === 'Yes'} onChange={() => field.onChange('Yes')} /> Yes
+                                                </label>
+                                                <label>
+                                                    <input type="radio" value="No" checked={field.value === 'No'} onChange={() => field.onChange('No')} /> No
+                                                </label>
+                                            </div>
+                                        )}
+                                    />
+                                </div>
+                                <div style={{ margin: '0 10px 10px' }}>
+                                <label style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Modal</label>
+                                <Checkbox style={{marginLeft:"10px"}} isChecked={isChecked} onChange={handleCheckboxChange}></Checkbox>
+                                </div>
                             </div>
-                          )}
-                        />
-                      </div>
-                    </div>
-                    <div style={{ display: 'flex', margin: "0 10px 0 10px", justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center' }}>
-                      <button className="append-button" type="button" style={{ width: '15%' }} onClick={() => append({ name: '', type: '', required: '' })}>+</button>
-                      {index > 0 && <button className="remove-button" type="button" style={{ width: '15%', marginRight: "10px" }} onClick={() => remove(index)}>X</button>}
-                    </div>
-                  </section>
-                )
-              })}
-              <br />
-              <button className="submit-button" style={{ width: "100%" }} type="submit">Submit</button>
-            </form>   
-          </ModalBody>
-        </ModalContent>
-      </Modal>  
-      : null } 
+                            
+                            <div style={{ display: 'flex', margin:"0 10px 0 10px" ,justifyContent:'space-between' ,flexDirection:'row' , alignItems: 'center' }}>
+                                <button className="append-button"  type="button" style={{width:'15%'}} onClick={()=>append({name:'',type:'', required:''})}>+</button>
+                                {index > 0 && <button className="remove-button" type="button" style={{width:'15%', marginRight:"10px"}} onClick={()=>remove(index)}>X</button>}
+                            </div>
+                        </section>
+                      
+                    )
+                })}
+                <br/>
+                <button className="submit-button" style={{width:"100%"}} type="submit">Submit</button>
+            </form>
         </div>
-        <div style={{ width: '50vw', margin:'0 20px 0 20px' ,height: '150vh', backgroundColor: '#1e1e1e', borderRadius: '5px', color: '#dcdcdc' }}>
+        <div style={{ width: '50%', margin:'0 20px 0 20px' ,height: '150vh', backgroundColor: '#1e1e1e', borderRadius: '5px', color: '#dcdcdc' }}>
             <Editor defaultLanguage="json" defaultValue="" value={output} className="editorbox"
                 options={{ theme: 'vs-dark' }}
             />
