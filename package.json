@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build","serve": "vite preview",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -16,6 +17,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@monaco-editor/react": "^4.6.0",
+    "@reduxjs/toolkit": "^2.0.1",
     "bikram-sambat-js": "^1.0.1",
     "dayjs": "^1.11.10",
     "framer-motion": "^10.16.5",
@@ -25,7 +27,9 @@
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
-    "react-router-dom": "^6.20.0"
+    "react-redux": "^9.0.1",
+    "react-router-dom": "^6.20.0",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
