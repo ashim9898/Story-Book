@@ -1,6 +1,6 @@
 import { Controller, useFormContext } from 'react-hook-form';
 import { isEmpty } from 'lodash';
-import * as fromFormHelpers from '../forms/@form-helper';
+import * as fromFormHelpers from '../@form-helper';
 import { useRigoCheckboxGroup } from './use-checkbox-group';
 import {  RigoUncontrollerComponent,} from './rigo-uncontrolled-component';
 
