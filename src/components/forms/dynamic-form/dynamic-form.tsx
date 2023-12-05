@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Box, Button, Checkbox, Flex, FormLabel, Input, Select } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { setForm } from "../../../redux/reducers/formSlice";
-import { RootState } from "../../../redux/store/store";
 import { formMaker } from "../../../utilities/form";
 import { selectGeneratedForm } from "../../../redux/selectors/selectors";
 
