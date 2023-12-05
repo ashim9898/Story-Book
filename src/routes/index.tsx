@@ -5,8 +5,6 @@ import { RouteEnum } from './route-enum';
 import Main from '../pages/main';
 import AppShell from '../components/app-shell';
 import { ErrorPlaceholder } from '../components/error-placeholder';
-
-
 export const router = createBrowserRouter([
     {
         path: "/",
