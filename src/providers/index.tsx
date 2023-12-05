@@ -4,7 +4,7 @@ import { router } from '../routes';
 import {store} from '../redux/store/store'
 import { Provider } from 'react-redux'
 
-export const AppProviders = (props:any) => {
+export const AppProviders = () => {
   return <ChakraProvider><Provider store={store}><RouterProvider router={router} /></Provider></ChakraProvider>;
 };
 

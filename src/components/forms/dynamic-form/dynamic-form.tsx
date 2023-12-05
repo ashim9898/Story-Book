@@ -1,7 +1,6 @@
 import { useFieldArray, useForm, Controller } from "react-hook-form";
 import { Editor } from "@monaco-editor/react";
 import { useState } from 'react';
-import './dynamicForm.css'
 import { Box, Button, Checkbox, Flex, FormLabel, Input, Select } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { setForm } from "../../../redux/reducers/formSlice";
@@ -34,7 +33,6 @@ export default function DynamicForm() {
     control,
   });
 
-  const [output, setOutput] = useState('');
 
   const onSubmit = (data: FormValues) => {
     let json = {
