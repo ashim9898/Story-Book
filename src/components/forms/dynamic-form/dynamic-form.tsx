@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setForm } from "../../../redux/reducers/formSlice";
 import { RootState } from "../../../redux/store/store";
 import { formMaker } from "../../../utilities/form";
+import { selectGeneratedForm } from "../../../redux/selectors/selectors";
 
 
 type FormValues = {
@@ -16,7 +17,7 @@ type FormValues = {
   }[];
 };
 
-const selectGeneratedForm = (state: RootState) => state.generatedForm;
+
 
 export default function DynamicForm() {
   const dispatch = useDispatch();
