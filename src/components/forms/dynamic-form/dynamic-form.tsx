@@ -62,8 +62,8 @@ export default function DynamicForm() {
             <Flex direction="column" gap={4} justifyContent="start">
 
               <Flex gap={2} direction="column" >
-                <FormLabel style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Modal</FormLabel>
-                <Checkbox style={{ marginLeft: "10px" }} isChecked={isChecked} onChange={handleCheckboxChange}></Checkbox>
+                <FormLabel htmlFor="name">Modal</FormLabel>
+                <Checkbox isChecked={isChecked} onChange={handleCheckboxChange}></Checkbox>
               </Flex>
 
               {fields.map((field, index) => {
@@ -73,7 +73,7 @@ export default function DynamicForm() {
                     justifyContent="space-between"
                   >
                     <Flex gap={2} direction="column" mx={2} my={5} >
-                      <FormLabel style={{ display: 'block', marginBottom: '8px' }} htmlFor="type">Type</FormLabel>
+                      <FormLabel htmlFor="type">Type</FormLabel>
                       <Controller
                         name={`form.${index}.type` as const}
                         control={control}
@@ -92,7 +92,7 @@ export default function DynamicForm() {
                     </Flex>
 
                     <Flex gap={2} direction="column">
-                      <FormLabel style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Name</FormLabel>
+                      <FormLabel htmlFor="name">Name</FormLabel>
                       <Controller
                         name={`form.${index}.name` as const}
                         control={control}
@@ -100,12 +100,12 @@ export default function DynamicForm() {
                       />
                     </Flex>
                     <Flex direction="column" gap={2}>
-                      <FormLabel style={{ display: 'block', marginTop: '20px', marginBottom: '8px' }} htmlFor="name">Required</FormLabel>
+                      <FormLabel htmlFor="name">Required</FormLabel>
                       <Controller
                         name={`form.${index}.required` as const}
                         control={control}
                         render={({ field }) => (
-                          <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <Box>
                             <FormLabel><input type="radio" value="Yes" checked={field.value === 'Yes'} onChange={() => field.onChange('Yes')} /> Yes
                             </FormLabel>
                             <FormLabel>
