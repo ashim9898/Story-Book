@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setForm } from "../../../redux/reducers/formSlice";
 import { formMaker } from "../../../utilities/form";
 import { selectGeneratedForm } from "../../../redux/selectors/selectors";
-
-
 type FormValues = {
   form: {
     name: string;
@@ -15,13 +13,10 @@ type FormValues = {
     required: string;
   }[];
 };
-
-
-
 export default function DynamicForm() {
   const dispatch = useDispatch();
   const select = useSelector(selectGeneratedForm);
-  console.log(select)
+  
   const [isChecked, setIsChecked] = useState(false);
   const { handleSubmit, control } = useForm({
     defaultValues: {
@@ -57,7 +52,7 @@ export default function DynamicForm() {
   return (
     <>
       <Flex h="100vh">
-        <Box flex={1} p={5}>
+        <Box flex={2} p={5}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Flex direction="column" gap={4} justifyContent="start">
 
@@ -72,7 +67,7 @@ export default function DynamicForm() {
                     alignItems="start"
                     justifyContent="space-between"
                   >
-                    <Flex gap={2} direction="column" mx={2} my={5} >
+                    <Flex gap={2} direction="column" mx={3} >
                       <FormLabel htmlFor="type">Type</FormLabel>
                       <Controller
                         name={`form.${index}.type` as const}
@@ -106,11 +101,13 @@ export default function DynamicForm() {
                         control={control}
                         render={({ field }) => (
                           <Box>
+                            <Flex direction="row">
                             <FormLabel><input type="radio" value="Yes" checked={field.value === 'Yes'} onChange={() => field.onChange('Yes')} /> Yes
                             </FormLabel>
                             <FormLabel>
                               <input type="radio" value="No" checked={field.value === 'No'} onChange={() => field.onChange('No')} /> No
                             </FormLabel>
+                            </Flex>
                           </Box>
                         )}
                       />
@@ -118,7 +115,7 @@ export default function DynamicForm() {
                     
                     {index > 0 && <Button
                       alignSelf="end"
-                      mb={8}
+                      mb={3}
                       colorScheme="red"
                       size="sm"
                       rounded="none"
@@ -128,8 +125,7 @@ export default function DynamicForm() {
                   </Flex>
                 )
               })}
-
-              <Button
+            <Button
                 colorScheme="teal"
                 size="sm"
                 width="30px"
