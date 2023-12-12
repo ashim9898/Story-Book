@@ -34,7 +34,7 @@ export default function DynamicForm() {
       formLabel: "Buy Cars",
       fields: {} as Record<string, { type: string; required: string }>
     };
-    data.form.forEach((item) => {
+    data.form.map((item) => {
       json.fields[item.name] = {
         type: item.type,
         required: item.required
@@ -52,7 +52,7 @@ export default function DynamicForm() {
   return (
     <>
       <Flex h="100vh">
-        <Box flex={2} p={5}>
+        <Box flex={1} p={5}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Flex direction="column" gap={4} justifyContent="start">
 
