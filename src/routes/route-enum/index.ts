@@ -1,5 +1,4 @@
 export enum RouteEnum {
-    INDEX = "/main",
-  
+    INDEX = "/main"
   }
   

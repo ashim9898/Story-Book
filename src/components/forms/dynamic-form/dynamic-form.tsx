@@ -42,8 +42,6 @@ export default function DynamicForm() {
     });
     const form = formMaker(json, isChecked);
     dispatch(setForm(form))
-
-
   };
 
   const handleCheckboxChange = (e: any) => {

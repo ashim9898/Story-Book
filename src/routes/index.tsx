@@ -25,6 +25,16 @@ export const router = createBrowserRouter([
                 element: <Main />,
                 errorElement: <ErrorPlaceholder />,
             },
+            {
+                path:"*",
+                element: (
+                    <Navigate
+                        to={RouteEnum.INDEX}
+                        replace
+                    />
+                ),
+                errorElement: <ErrorPlaceholder />,
+            },
           
         ]
     },
