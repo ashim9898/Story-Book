@@ -1,10 +1,10 @@
 export const formMaker = (json: any, isChecked: boolean) => {
 
     let first = `import {FormProvider} from "../connect-form/form-provider"
-  import {ConnectForm} from "../connect-form/connect-form"
-  import { Container } from "@chakra-ui/react"
-  import { Flex } from "@chakra-ui/react"
-  import { Button } from "@chakra-ui/react"
+import {ConnectForm} from "../connect-form/connect-form"
+import { Container } from "@chakra-ui/react"
+import { Flex } from "@chakra-ui/react"
+import { Button } from "@chakra-ui/react"
     
       export const form=()=>{ 
       const handleSubmit = (data: any) => 
@@ -55,13 +55,13 @@ export const formMaker = (json: any, isChecked: boolean) => {
   }`;
   
     let firstModal = `import {Modal,ModalOverlay,ModalContent,ModalHeader,ModalBody,ModalCloseButton,useDisclosure,} from "@chakra-ui/react";
-  import {FormProvider} from "../src/components/connect-form/form-provider"
-  import {ConnectForm} from "../src/components/connect-form/connect-form"
-  import { Container } from "@chakra-ui/react"
+import {FormProvider} from "../src/components/connect-form/form-provider"
+import {ConnectForm} from "../src/components/connect-form/connect-form"
+import { Container } from "@chakra-ui/react"
   
-  import { Flex } from "@chakra-ui/react"
-  import { Button } from "@chakra-ui/react"
-  import { useState } from "react";
+import { Flex } from "@chakra-ui/react"
+import { Button } from "@chakra-ui/react"
+import { useState } from "react";
      export const form=()=>{ 
      const { isOpen, onOpen, onClose } = useDisclosure();
      const handleSubmit = (data: any) => 
@@ -117,7 +117,7 @@ export const formMaker = (json: any, isChecked: boolean) => {
         })
         .replace(/\s+/g, "");
       defaultValues += `${fieldName}: '',`;
-      importStatements += `import {${fieldname1}V2} from "../${json.fields[fields].type}/index";\n`;
+      importStatements +=`import {${fieldname1}V2} from "../${json.fields[fields].type}/index";\n`;
   
       formContent += `
                     <${fieldname1}V2.Default
