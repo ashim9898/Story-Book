@@ -64,7 +64,6 @@ export const formMaker = (json: any, isChecked: boolean) => {
   import { useState } from "react";
      export const form=()=>{ 
      const { isOpen, onOpen, onClose } = useDisclosure();
-     const [isChecked, setIsChecked] = useState(false);
      const handleSubmit = (data: any) => 
      { 
        if(!data){
