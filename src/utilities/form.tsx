@@ -1,11 +1,8 @@
 export const formMaker = (json: any, isChecked: boolean) => {
 
     let first = `import {FormProvider} from "../connect-form/form-provider"
-import { Button, ChakraProvider, Checkbox, Container, Flex } from '@chakra-ui/react';
+import { Button, ChakraProvider, Container, Flex } from '@chakra-ui/react';
 import {ConnectForm} from "../connect-form/connect-form"
-
-
-    
       export const form=()=>{ 
       const handleSubmit = (data: any) => 
       { 
@@ -82,7 +79,7 @@ import { useState } from "react";
       setIsChecked(false)
     }
     return (
-      <ChakraProvider>
+    <ChakraProvider>
     <Checkbox isChecked={isChecked} onChange={handleCheckboxChange}>Open Form</Checkbox>
     <Modal isOpen={isOpen} onClose={onClose}>
     <ModalOverlay />
