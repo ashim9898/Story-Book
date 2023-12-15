@@ -21,61 +21,56 @@ export default meta;
 export const Default = {
   args: {},
   render: () => {
+    const handleSubmit = (data: any) => 
+    { 
+        if(!data){
+            return
+        }
+        console.log(data)
+    } 
     return (
-      <ChakraProvider>
+        <ChakraProvider>
         <FormProvider
           onSubmit={(data: any) => {
-            console.log({
-              data,
-            });
+            console.log({ data });
           }}
-          defaultValues={{
-           
-            default: 10,
-            composed: 20,
-          }}
+          defaultValues={{kmc: '',}} 
           showDevTool
         >
           <ConnectForm>
-            {(formProps: any) => {
-              const {
-                control,
-                formState: { errors },
-              } = formProps;
-
-              const inputProps = {
+           {(formProps: any) => {
+            const {
+              control,formState: { errors },
+            } = formProps;
+            const inputProps = {
                 control,
                 errors,
-              };
-
-              return (
+            };
+            return (
                 <Container
-                  maxW='xl'
+                  maxW="xl"
                   py={5}
-                  display='flex'
-                  flexDirection='column'
+                  display="flex"
+                  flexDirection="column"
                   gap={3}
                 >
                   <TextAreaV2.Default
-                    name='default'
-                    label='Default'
+                    name="kmc"
+                    label="Kmc"
                     required={true}
                     {...inputProps}
                   />
-
-                  
-              
                   
                   <Flex>
-                    <Button type='submit'>Submit</Button>
+                    <Button onSubmit={handleSubmit} type="submit">Submit</Button>
                   </Flex>
                 </Container>
-              );
-            }}
+            );
+          }}
           </ConnectForm>
         </FormProvider>
-      </ChakraProvider>
-    );
+        </ChakraProvider>
+    )
   },
 };
 
