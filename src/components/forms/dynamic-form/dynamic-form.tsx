@@ -100,10 +100,10 @@ export default function DynamicForm() {
                         render={({ field }) => (
                           <Box>
                             <Flex direction="row">
-                            <FormLabel><input type="radio" value="Yes" checked={field.value === 'Yes'} onChange={() => field.onChange('Yes')} /> Yes
+                            <FormLabel><input type="radio" value="true" checked={field.value === 'true'} onChange={() => field.onChange('true')} /> Yes
                             </FormLabel>
                             <FormLabel>
-                              <input type="radio" value="No" checked={field.value === 'No'} onChange={() => field.onChange('No')} /> No
+                              <input type="radio" value="fakse" checked={field.value === 'false'} onChange={() => field.onChange('false')} /> No
                             </FormLabel>
                             </Flex>
                           </Box>

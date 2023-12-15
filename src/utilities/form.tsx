@@ -1,10 +1,10 @@
 export const formMaker = (json: any, isChecked: boolean) => {
 
     let first = `import {FormProvider} from "../connect-form/form-provider"
+import { Button, ChakraProvider, Checkbox, Container, Flex } from '@chakra-ui/react';
 import {ConnectForm} from "../connect-form/connect-form"
-import { Container } from "@chakra-ui/react"
-import { Flex } from "@chakra-ui/react"
-import { Button } from "@chakra-ui/react"
+
+
     
       export const form=()=>{ 
       const handleSubmit = (data: any) => 
@@ -15,6 +15,7 @@ import { Button } from "@chakra-ui/react"
           console.log(data)
       } 
       return (
+          <ChakraProvider>
           <FormProvider
             onSubmit={(data: any) => {
               console.log({ data });
@@ -51,19 +52,18 @@ import { Button } from "@chakra-ui/react"
             }}
             </ConnectForm>
           </FormProvider>
+          </ChakraProvider>
       )
   }`;
   
     let firstModal = `import {Modal,ModalOverlay,ModalContent,ModalHeader,ModalBody,ModalCloseButton,useDisclosure,} from "@chakra-ui/react";
+import { Button, ChakraProvider, Checkbox, Container, Flex } from '@chakra-ui/react';
 import {FormProvider} from "../src/components/connect-form/form-provider"
 import {ConnectForm} from "../src/components/connect-form/connect-form"
-import { Container } from "@chakra-ui/react"
-  
-import { Flex } from "@chakra-ui/react"
-import { Button } from "@chakra-ui/react"
 import { useState } from "react";
      export const form=()=>{ 
      const { isOpen, onOpen, onClose } = useDisclosure();
+     const [isChecked, setIsChecked] = useState(false);
      const handleSubmit = (data: any) => 
      { 
        if(!data){
@@ -71,18 +71,32 @@ import { useState } from "react";
        }
        console.log(data)
     } 
+
+    const handleCheckboxChange = (e: any) => {
+      setIsChecked(e.target.checked);
+      onOpen();
+    };
+
+    const handleClick = ()=>{
+      onClose()
+      setIsChecked(false)
+    }
     return (
+      <ChakraProvider>
+    <Checkbox isChecked={isChecked} onChange={handleCheckboxChange}>Open Form</Checkbox>
     <Modal isOpen={isOpen} onClose={onClose}>
     <ModalOverlay />
     <ModalContent>
       <ModalHeader>Your Form</ModalHeader>
-      <ModalCloseButton />
+      <ModalCloseButton onClick={handleClick}/>
       <ModalBody>
+      
       <FormProvider
         onSubmit={(data: any) => {
           console.log({ data });
           onClose();
-          setIsChecked(false);
+          onClose();
+          setIsChecked(false)
         }}
         defaultValues={{`;
     let thirdModal = `
@@ -94,9 +108,11 @@ import { useState } from "react";
         }}
         </ConnectForm>
       </FormProvider>
+      
       </ModalBody>
       </ModalContent>
     </Modal>
+    </ChakraProvider>
   )
   }`;
   
