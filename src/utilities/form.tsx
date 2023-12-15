@@ -3,7 +3,7 @@ export const formMaker = (json: any, isChecked: boolean) => {
     let first = `import {FormProvider} from "../connect-form/form-provider"
 import { Button, ChakraProvider, Container, Flex } from '@chakra-ui/react';
 import {ConnectForm} from "../connect-form/connect-form"
-      export const form=()=>{ 
+    export const form=()=>{ 
       const handleSubmit = (data: any) => 
       { 
           if(!data){
