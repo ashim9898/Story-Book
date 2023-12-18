@@ -59,25 +59,14 @@ const CHECKBOX_OPTIONS = [
                   flexDirection="column"
                   gap={3}
                 >
-                  <CheckboxGroupV2.Default
-                    name="empty"
-                    label="Empty"
-                    required={true}
-                    getOptionLabel={(option: any) =>
-                      `${option.label}: ${option.value}`
-                    }
-                    {...inputProps}
-                    {...commonProps}
-                  />
-
-                  <CheckboxGroupV2.Default
-                    name="default"
-                    label="Default"
-                    {...inputProps}
-                    isDisabled
-                    required
-                    {...commonProps}
-                  />
+                 
+                 <CheckboxGroupV2.Default
+                      name="a"
+                      label="A"
+                      required={true}
+                      {...inputProps}
+                      {...commonProps}
+                    />
 
                   <CheckboxGroupV2
                     name="composed"
